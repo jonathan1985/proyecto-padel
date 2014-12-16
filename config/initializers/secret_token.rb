@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Serieschuchu::Application.config.secret_key_base = '27fc6686a8e439b8c38db3af24ae2fd53c2ee853e3c3a053ee2c05a4cee3c279fadf0f025ff091f59dabf8d74e2b4b757bdcbe87188a80266d1ca9e424872f5a'
+ForoPadel::Application.config.secret_key_base = '27fc6686a8e439b8c38db3af24ae2fd53c2ee853e3c3a053ee2c05a4cee3c279fadf0f025ff091f59dabf8d74e2b4b757bdcbe87188a80266d1ca9e424872f5a'

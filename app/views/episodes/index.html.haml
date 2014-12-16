@@ -1,29 +1,29 @@
-- @series = Series.find(params[:series_id])
+- @palas = palas.find(params[:palas_id])
 .show
   .show-col-1
-    %img{:src=>"#{@series.enlace_imagen}"}
+    %img{:src=>"#{@palas.enlace_imagen}"}
     %br
-    - @follow_show = FollowShow.where(user_id: current_user.id, series_id: @series.id)
-    %form{:class=>"seguimiento-form",:method=>"post",:action=>"/series/#{@series.id}/follow_shows",:id=>"new_follow_show"}
+    - @follow_show = FollowShow.where(user_id: current_user.id, palas_id: @palas.id)
+    %form{:class=>"seguimiento-form",:method=>"post",:action=>"/palas/#{@palas.id}/follow_shows",:id=>"new_follow_show"}
       = hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token)
       %input{:type=>"hidden",:name=>"url_volver",:value=>request.fullpath}
       %input{:type=>"hidden",:name=>"follow_show[user_id]",:value=>current_user.id}
-      %input{:type=>"hidden",:name=>"follow_show[series_id]",:value=>@series.id}
+      %input{:type=>"hidden",:name=>"follow_show[palas_id]",:value=>@palas.id}
       - if @follow_show.count == 0
-        %input{:type=>"submit",:class=>"btn top-20 btn-danger",:value=>"Seguir esta serie"}
+        %input{:type=>"submit",:class=>"btn top-20 btn-danger",:value=>"Seguir esta pala"}
       - else
         %input{:type=>"submit",:class=>"btn top-20 btn-success",:value=>"Dejar de seguir"}
   .show-col-2
     .show-titulo
-      = @series.nombre
+      = @palas.nombre
     .show-menu
     %ul{:class=>"nav nav-tabs",:id=>"myTab"}
       %li
-        %a{:href=>"/series/#{@series.id}"} Información
+        %a{:href=>"/palas/#{@palas.id}"} Información
       %li{:class=>"active"}
         %a{:href=>"#episodios","data-toggle"=>"tab"} Episodios
       %li
-        %a{:href=>"/series/#{@series.id}/comments"} Comentarios
+        %a{:href=>"/palas/#{@palas.id}/comments"} Comentarios
 
     #myTabContent{:class=>"tab-content"}
       #episodios{:class=>"tab-pane fade in active"}
@@ -31,19 +31,19 @@
           .media Lista de episodios
           .show-info-tabla
             %table.tabla-episodios.table
-              - @series.episodes.each do |episode|
+              - @palas.episodes.each do |episode|
                 %tr
-                  %td.numeros_series
+                  %td.numeros_palas
                     = episode.numero_temporada
                     x
                     = '%02d' % episode.numero_episodio
-                  %td.nombre_series
-                    %a{:href=>"/series/#{@series.id}/episodes/#{episode.id}/links"} 
+                  %td.nombre_palas
+                    %a{:href=>"/palas/#{@palas.id}/episodes/#{episode.id}/links"} 
                       =episode.nombre
           .show-sinopsis
             .media Agregar episodio
             %p
-              = form_for ([@series, @series.episodes.build]) do |f|
+              = form_for ([@palas, @palas.episodes.build]) do |f|
                 %table
                   %tr
                     %th

@@ -9,6 +9,6 @@ describe "Welcome" do
 
     it { should have_content('REGISTRAR')}
     it { should have_content('LOGIN')}
-    it { should have_title('Serieschuchu')}
+    it { should have_title('ForoPadel')}
   end
 end

@@ -3,17 +3,17 @@ class CommentsController < ApplicationController
   def create
     # Necesito en params[:comment]
 
-    @series = Series.find(params[:series_id])
+    @palas = palas.find(params[:palas_id])
     parametros = params[:comment].permit(:content, :commenter, :user_id)
 
-    @comment = @series.comments.create(parametros)
-    redirect_to "#{series_path(@series)}/comments"
+    @comment = @palas.comments.create(parametros)
+    redirect_to "#{palas_path(@palas)}/comments"
   end
 
   def destroy
-    @series = Series.find(params[:series_id])
-    @comment = @series.comments.find(params[:id])
+    @palas = palas.find(params[:palas_id])
+    @comment = @palas.comments.find(params[:id])
     @comment.destroy
-    redirect_to "#{series_path(@series)}/comments"
+    redirect_to "#{palas_path(@palas)}/comments"
   end
 end

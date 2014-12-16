@@ -1,13 +1,13 @@
-Serieschuchu::Application.routes.draw do
+ForoPadel::Application.routes.draw do
   #get "amigos/index"
   #get "perfiles/index"
   #get "listadeusuarios/index"
-  #get "misseries/index"
+  #get "mispalas/index"
   get "links/index"
   get "link/index"
   get "episodes/index"
-  resources :series
-  resources :misseries
+  resources :palas
+  resources :mispalas
   resources :listadeusuarios
   resources :perfiles
   resources :amigos
@@ -72,8 +72,8 @@ Serieschuchu::Application.routes.draw do
   #     resources :products
   #   end
 
-  #asociando las rutas de los episodeos con el de las series
-  resources :series do
+  #asociando las rutas de los episodeos con el de las palas
+  resources :palas do
     resources :comments
     resources :follow_shows
   	resources :episodes do

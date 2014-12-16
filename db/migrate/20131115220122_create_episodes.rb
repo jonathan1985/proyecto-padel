@@ -4,7 +4,7 @@ class CreateEpisodes < ActiveRecord::Migration
       t.string :nombre
       t.integer :numero_temporada
       t.integer :numero_episodio
-      t.references :series, index: true
+      t.references :palas, index: true
 
       t.timestamps
     end

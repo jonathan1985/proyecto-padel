@@ -3,18 +3,18 @@
 	Foro Padel es una nueva aplicación destinada a resolver todas las preguntas sobre este maravilloso deporte.
 
 %h2 Últimas Palas añadidas
-- @series = Series.order(created_at: :desc).limit(8)
-- @series.each do |series|
-	%a{:href=>"/series/#{series.id}"}
-		.tipo-serie-catalogo
-			%img{:src=>series.enlace_imagen}
-			%label #{series.nombre}
+- @palas = palas.order(created_at: :desc).limit(4)
+- @palas.each do |palas|
+	%a{:href=>"/palas/#{palas.id}"}
+		.tipo-pala-catalogo
+			%img{:src=>palas.enlace_imagen}
+			%label #{palas.nombre}
 
 %h2 Últimas Palas seguidas
-- @seguidas = FollowShow.order(created_at: :desc).limit(8)
+- @seguidas = FollowShow.order(created_at: :desc).limit(4)
 - @seguidas.each do |seguida|
-- series = Series.find(seguida.series_id)
-	%a{:href=>"/series/#{series.id}"}
-		.tipo-serie-catalogo
-			%img{:src=>series.enlace_imagen}
-			%label #{series.nombre}
+- palas = palas.find(seguida.palas_id)
+	%a{:href=>"/palas/#{palas.id}"}
+		.tipo-pala-catalogo
+			%img{:src=>palas.enlace_imagen}
+			%label #{palas.nombre}

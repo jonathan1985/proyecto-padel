@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-#ruby-gemset=serieschuchu
+#ruby-gemset=ForoPadel
 
 # Gema de Rails
 gem 'rails', '4.0.1'

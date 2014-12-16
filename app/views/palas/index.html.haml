@@ -1,0 +1,17 @@
+%h1 Catálogo de Palas
+%p 
+  Nuestro catálogo actual cuenta con un total de #{@palas.count} Palas. Iremos ampliando el catálogo periódicamente.
+%br
+- @palas.each do |palas|
+  %a{:href=>"palas/#{palas.id}"}
+    .tipo-pala-catalogo
+      %img{:src=>palas.enlace_imagen}
+      %label #{palas.nombre}
+  //%td= link_to 'Show', palas
+  //%td= link_to 'Edit', edit_palas_path(palas)
+  //%td= link_to 'Destroy', palas, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+
+= link_to 'Añadir Pala', new_palas_path

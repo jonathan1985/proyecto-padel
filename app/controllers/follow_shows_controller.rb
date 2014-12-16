@@ -1,6 +1,6 @@
 class FollowShowsController < ApplicationController
 	def create
-		parametros = params.require(:follow_show).permit(:user_id, :series_id)
+		parametros = params.require(:follow_show).permit(:user_id, :palas_id)
 		puts "----------- LOS PARAMETROS SON: "
 		puts parametros
 		puts " ---------- FIN ---------------"

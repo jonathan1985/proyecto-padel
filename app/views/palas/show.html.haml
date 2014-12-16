@@ -1,0 +1,87 @@
+.show
+  .show-col-1
+    %img{:src=>"#{@palas.enlace_imagen}"}
+    %br
+    - @follow_show = FollowShow.where(user_id: current_user.id, palas_id: @palas.id)
+    %form{:class=>"seguimiento-form",:method=>"post",:action=>"/palas/#{@palas.id}/follow_shows",:id=>"new_follow_show"}
+      = hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token)
+      %input{:type=>"hidden",:name=>"url_volver",:value=>request.fullpath}
+      %input{:type=>"hidden",:name=>"follow_show[user_id]",:value=>current_user.id}
+      %input{:type=>"hidden",:name=>"follow_show[palas_id]",:value=>@palas.id}
+      - if @follow_show.count == 0
+        %input{:type=>"submit",:class=>"btn top-20 btn-danger",:value=>"Seguir esta pala"}
+      - else
+        %input{:type=>"submit",:class=>"btn top-20 btn-success",:value=>"Dejar de seguir"}
+    
+  .show-col-2
+    .show-titulo
+      = @palas.nombre
+    .show-menu
+    %ul{:class=>"nav nav-tabs",:id=>"myTab"}
+      %li{:class=>"active"}
+        %a{:href=>"/palas/#{@palas.id}"} Información
+      %li
+        %a{:href=>"/palas/#{@palas.id}/episodes"} Episodios
+      %li
+        %a{:href=>"/palas/#{@palas.id}/comments"} Comentarios
+    #myTabContent{:class=>"tab-content"}
+      #informacion{:class=>"tab-pane fade in active"}
+        .show-info
+          .media Información
+          .show-info-tabla
+            %table
+              %tr
+                %td Información
+                %td=@palas.informacion
+              %tr
+                %td Puntuación
+                %td=@palas.puntuacion.round(2)
+              %tr
+                %td Directores
+                %td=@palas.directores
+              %tr
+                %td Título Original
+                %td=@palas.titulo_original
+              %tr
+                %td Géneros
+                %td=@palas.generos
+          .show-sinopsis
+            .media Sinopsis
+            %p
+              =@palas.sinopsis
+  .show-col-3
+    
+
+
+//%p#notice= notice
+//%p
+//  %b Nombre:
+//  = @palas.nombre
+//%p
+//  %b Informacion:
+//  = @palas.informacion
+//%p
+//  %b Sinopsis:
+//  = @palas.sinopsis
+//%p
+//  %b Puntuacion:
+//  = @palas.puntuacion
+//%p
+//  %b Votos:
+//  = @palas.votos
+//%p
+//  %b Imagen:
+//  = @palas.imagen
+//%p
+//  %b Enlace imagen:
+//  = @palas.enlace_imagen
+//%p
+//  %b Directores:
+//  = @palas.directores
+//%p
+//  %b Titulo original:
+//  = @palas.titulo_original
+
+= link_to 'Edit', edit_palas_path(@palas)
+\|
+= link_to 'Back', palas_index_path

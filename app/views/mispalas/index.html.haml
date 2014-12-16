@@ -1,0 +1,12 @@
+%h1 Mis Palas:
+%p
+  Listado de tus Palas actuales.
+%br
+- @follow_show = FollowShow.where(user_id: current_user.id)
+- @follow_show.each do |pala_actual|
+  - actual = palas.where(id: pala_actual.palas_id)
+  - actual.each do |mipala|
+    %a{:href=>"palas/#{mipala.id}"}
+      .tipo-pala-catalogo
+        %img{:src=>mipala.enlace_imagen}
+        %label #{mipala.nombre}

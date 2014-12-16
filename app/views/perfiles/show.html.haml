@@ -8,7 +8,7 @@
       %h2 #{u.username}
       - @follow_show = FollowShow.where(user_id: params["id"]) 
       %p
-        Este usuario sigue un total de #{@follow_show.count} series
+        Este usuario sigue un total de #{@follow_show.count} palas
         - if params["id"].to_s != current_user.id.to_s
           %br
           - @follow_user = FollowUser.where(user_id: current_user.id, amigo_id: params["id"])
@@ -24,10 +24,10 @@
 
   .interior-1000
     %h2.no-top Palas que sigue #{u.username}
-    - @follow_show.each do |serie_actual|
-      - actual = Series.where(id: serie_actual.series_id)
-      - actual.each do |miserie|
-        %a{:href=>"../series/#{miserie.id}"}
-          .tipo-serie-catalogo
-            %img{:src=>miserie.enlace_imagen}
-            %label #{miserie.nombre}
+    - @follow_show.each do |pala_actual|
+      - actual = palas.where(id: pala_actual.palas_id)
+      - actual.each do |mipala|
+        %a{:href=>"../palas/#{mipala.id}"}
+          .tipo-pala-catalogo
+            %img{:src=>mipala.enlace_imagen}
+            %label #{mipala.nombre}

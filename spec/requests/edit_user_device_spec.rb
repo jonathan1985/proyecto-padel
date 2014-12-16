@@ -17,7 +17,7 @@ describe "Gem Devise" do
     before { visit edit_user_registration_path }
   
     it { should have_selector('h1', text: 'MODIFICAR CUENTA') }
-    it { should have_selector('h1', text: 'SERIESCHUCHU') }
+    it { should have_selector('h1', text: 'palaSCHUCHU') }
     it { should have_content('Back') }
     it { should have_content("Email") }
     it { should have_content("Username") }

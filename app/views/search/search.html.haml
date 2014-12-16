@@ -5,16 +5,16 @@
       %span(class="glyphicon glyphicon-search")
 
 %h1 Búsqueda de Palas
-- if @series.any?
-  - if @series.count != 1
-    %p Se han encontrado <strong>#{@series.count}</strong> resultados.
+- if @palas.any?
+  - if @palas.count != 1
+    %p Se han encontrado <strong>#{@palas.count}</strong> resultados.
   - else
     %p Se ha encontrado <strong>1</strong> resultado.
    
-  - @series.each do |series|
-    %a{:href=>"series/#{series.id}"}
-      .tipo-serie-catalogo
-        %img{:src=>series.enlace_imagen}
-        %label #{series.nombre}
+  - @palas.each do |palas|
+    %a{:href=>"palas/#{palas.id}"}
+      .tipo-pala-catalogo
+        %img{:src=>palas.enlace_imagen}
+        %label #{palas.nombre}
 - else
   %p No se ha encontrado ningún resultado

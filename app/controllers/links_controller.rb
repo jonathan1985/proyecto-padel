@@ -14,7 +14,7 @@ class LinksController < ApplicationController
 		puts ".... metodos son ... "
 		puts @episode.methods
 		@link = @episode.links.create(parametros)
-		redirect_to "/series/#{params[:series_id]}/episodes/#{params[:episode_id]}/links"
+		redirect_to "/palas/#{params[:palas_id]}/episodes/#{params[:episode_id]}/links"
    end
 
 end

@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :commenter
       t.text :content
       t.integer :user_id
-      t.references :series, index: true
+      t.references :palas, index: true
 
       t.timestamps
     end
