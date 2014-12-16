@@ -9,6 +9,7 @@
           border-radius: $radius;
 }
 $azul_series: #2980B9;
+$azul_celeste: #139ABD;
 $azul_input: #68A6CE;
 body {
 	font-family: 'Open Sans', sans-serif;
@@ -19,7 +20,7 @@ body {
 }
 .barra-top {
 	height:50px;
-	background-color: $azul_series;
+	background-color: $azul_celeste;
 	color:white;
 }
 .logo-top, .menu-top, .login-top, .buscador-top {

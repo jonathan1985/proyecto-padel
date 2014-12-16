@@ -1,8 +1,8 @@
-%h1 Bienvenid@ a Serieschuchu
+%h1 Bienvenid@ a nuestro Foro de Padel
 %p 
-	Serieschuchu es una red social dedicada a compartir enlaces a series colgadas en internet. Permite combinar el visionado de series además de interactuar con otros usuarios acerca de series que te hayan gustado o que pienses que podrían gustarles.
+	Foro Padel es una nueva aplicación destinada a resolver todas las preguntas sobre este maravilloso deporte.
 
-%h2 Últimas series añadidas
+%h2 Últimas Palas añadidas
 - @series = Series.order(created_at: :desc).limit(8)
 - @series.each do |series|
 	%a{:href=>"/series/#{series.id}"}
@@ -10,7 +10,7 @@
 			%img{:src=>series.enlace_imagen}
 			%label #{series.nombre}
 
-%h2 Últimas series seguidas
+%h2 Últimas Palas seguidas
 - @seguidas = FollowShow.order(created_at: :desc).limit(8)
 - @seguidas.each do |seguida|
 - series = Series.find(seguida.series_id)
