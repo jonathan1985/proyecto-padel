@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Serieschuchu</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag    "normalize", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "bootstrap", media: "all", "data-turbolinks-track" => true %> 
+  <%= stylesheet_link_tag    "inicio", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  
+</head>
+<body>
+<div class="barra-top">
+	<div class="interior-series">
+		<div class="logo-top">
+			<a href="/inicio/portada">
+				<img src="/assets/logo_principal.png"/>
+			</a>
+		</div>
+		<div class="menu-top">
+			<ul>
+			<a href="/misseries">
+			  <li> Mis Series</li>
+			</a>
+			<a href="/amigos">  
+			  <li> Amigos </li>
+			</a>
+			<a href="/series">
+				<li> Catálogo</li>
+			</a>
+			<a href="/listadeusuarios">
+			  <li> Lista de usuarios </li>
+			</a>
+			</ul>
+		</div>
+		<div class="login-top">
+			<div class="login-top-imagen">
+				<%= image_tag avatar_url(current_user) %>
+			</div>
+			<div class="login-top-texto">
+				<a href="/perfiles/<%= current_user.id %>"><%= current_user.username %></a>
+				<br/>
+				<label class="mini">
+					<%=link_to("Sign out", destroy_user_session_path, :method => :delete) %>
+				</label>
+			</div>
+		</div>
+		<div class="buscador-top">
+      <form action="/search" method="get">
+        <input type="text" name="search" id="search" placeholder="Buscar" /> 
+        <span class="glyphicon glyphicon-search"></span>
+        <input class="hidden" type="submit" value="Buscar" />
+      </form>
+		</div>
+	</div>
+</div>
+
+<div class="interior-series">
+
+	<%= yield %>
+
+</div>
+
+</body>
+</html>

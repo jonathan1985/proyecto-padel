@@ -1,0 +1,58 @@
+- @series = Series.find(params[:series_id])
+.show
+  .show-col-1
+    %img{:src=>"#{@series.enlace_imagen}"}
+    %br
+    - @follow_show = FollowShow.where(user_id: current_user.id, series_id: @series.id)
+    %form{:class=>"seguimiento-form",:method=>"post",:action=>"/series/#{@series.id}/follow_shows",:id=>"new_follow_show"}
+      = hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token)
+      %input{:type=>"hidden",:name=>"url_volver",:value=>request.fullpath}
+      %input{:type=>"hidden",:name=>"follow_show[user_id]",:value=>current_user.id}
+      %input{:type=>"hidden",:name=>"follow_show[series_id]",:value=>@series.id}
+      - if @follow_show.count == 0
+        %input{:type=>"submit",:class=>"btn top-20 btn-danger",:value=>"Seguir esta serie"}
+      - else
+        %input{:type=>"submit",:class=>"btn top-20 btn-success",:value=>"Dejar de seguir"}
+  .show-col-2
+    .show-titulo
+      = @series.nombre
+    .show-menu
+    %ul{:class=>"nav nav-tabs",:id=>"myTab"}
+      %li
+        %a{:href=>"/series/#{@series.id}"} Información
+      %li
+        %a{:href=>"/series/#{@series.id}/episodes"} Episodios
+      %li{:class=>"active"}
+        %a{:href=>"#comentarios","data-toggle"=>"tab"} Comentarios
+    #myTabContent{:class=>"tab-content"}
+      #episodios{:class=>"tab-pane fade in active"}
+        .show-info
+          .show-sinopsis
+            .media
+              Agregar comentario
+              %p
+                = form_for([@series, @series.comments.build]) do |f| 
+                  = f.text_area :content, :placeholder => "Escribe un comentario..."
+                  = f.number_field :user_id, :value => current_user.id, :type => "hidden"
+                  = f.text_field :commenter, :value => current_user.username, :type => "hidden"
+                  #enviar.actions.top-20
+                    = f.submit "Enviar"
+
+          .media Comentarios de #{@series.nombre}
+          
+          - if !@series.comments.count.zero?
+            .show-comments
+              - @series.comments.reverse.each do |comment|
+                - if comment.content
+                  .usercomment
+                    = image_tag avatar_url(User.find(comment.user_id))
+                    .comment
+                      <b>#{comment.commenter}</b> comentó:
+                      - if (comment.user_id == current_user.id)
+                        .delete-comment
+                          = link_to 'Eliminar', [comment.series, comment], method: :delete, data: { confirm: '¿Estás seguro?' }
+                      %br
+                      = comment.content
+                  .clear
+          - else
+            %p Nadie ha comentado aún. Sé el primero en hacerlo!

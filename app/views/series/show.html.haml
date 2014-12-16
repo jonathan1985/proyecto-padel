@@ -1,0 +1,87 @@
+.show
+  .show-col-1
+    %img{:src=>"#{@series.enlace_imagen}"}
+    %br
+    - @follow_show = FollowShow.where(user_id: current_user.id, series_id: @series.id)
+    %form{:class=>"seguimiento-form",:method=>"post",:action=>"/series/#{@series.id}/follow_shows",:id=>"new_follow_show"}
+      = hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token)
+      %input{:type=>"hidden",:name=>"url_volver",:value=>request.fullpath}
+      %input{:type=>"hidden",:name=>"follow_show[user_id]",:value=>current_user.id}
+      %input{:type=>"hidden",:name=>"follow_show[series_id]",:value=>@series.id}
+      - if @follow_show.count == 0
+        %input{:type=>"submit",:class=>"btn top-20 btn-danger",:value=>"Seguir esta serie"}
+      - else
+        %input{:type=>"submit",:class=>"btn top-20 btn-success",:value=>"Dejar de seguir"}
+    
+  .show-col-2
+    .show-titulo
+      = @series.nombre
+    .show-menu
+    %ul{:class=>"nav nav-tabs",:id=>"myTab"}
+      %li{:class=>"active"}
+        %a{:href=>"/series/#{@series.id}"} Información
+      %li
+        %a{:href=>"/series/#{@series.id}/episodes"} Episodios
+      %li
+        %a{:href=>"/series/#{@series.id}/comments"} Comentarios
+    #myTabContent{:class=>"tab-content"}
+      #informacion{:class=>"tab-pane fade in active"}
+        .show-info
+          .media Información
+          .show-info-tabla
+            %table
+              %tr
+                %td Información
+                %td=@series.informacion
+              %tr
+                %td Puntuación
+                %td=@series.puntuacion.round(2)
+              %tr
+                %td Directores
+                %td=@series.directores
+              %tr
+                %td Título Original
+                %td=@series.titulo_original
+              %tr
+                %td Géneros
+                %td=@series.generos
+          .show-sinopsis
+            .media Sinopsis
+            %p
+              =@series.sinopsis
+  .show-col-3
+    
+
+
+//%p#notice= notice
+//%p
+//  %b Nombre:
+//  = @series.nombre
+//%p
+//  %b Informacion:
+//  = @series.informacion
+//%p
+//  %b Sinopsis:
+//  = @series.sinopsis
+//%p
+//  %b Puntuacion:
+//  = @series.puntuacion
+//%p
+//  %b Votos:
+//  = @series.votos
+//%p
+//  %b Imagen:
+//  = @series.imagen
+//%p
+//  %b Enlace imagen:
+//  = @series.enlace_imagen
+//%p
+//  %b Directores:
+//  = @series.directores
+//%p
+//  %b Titulo original:
+//  = @series.titulo_original
+
+= link_to 'Edit', edit_series_path(@series)
+\|
+= link_to 'Back', series_index_path

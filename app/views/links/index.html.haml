@@ -1,0 +1,92 @@
+- @series = Series.find(params[:series_id])
+- @episode = Episode.find(params[:episode_id])
+.show
+  .show-col-1
+    %img{:src=>"#{@series.enlace_imagen}"}
+    %br
+    - @follow_show = FollowShow.where(user_id: current_user.id, series_id: @series.id)
+    %form{:class=>"seguimiento-form",:method=>"post",:action=>"/series/#{@series.id}/follow_shows",:id=>"new_follow_show"}
+      = hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token)
+      %input{:type=>"hidden",:name=>"url_volver",:value=>request.fullpath}
+      %input{:type=>"hidden",:name=>"follow_show[user_id]",:value=>current_user.id}
+      %input{:type=>"hidden",:name=>"follow_show[series_id]",:value=>@series.id}
+      - if @follow_show.count == 0
+        %input{:type=>"submit",:class=>"btn top-20 btn-danger",:value=>"Seguir esta serie"}
+      - else
+        %input{:type=>"submit",:class=>"btn top-20 btn-success",:value=>"Dejar de seguir"}
+  .show-col-2
+    .show-titulo
+      = @series.nombre
+    .show-menu
+    %ul{:class=>"nav nav-tabs",:id=>"myTab"}
+      %li
+        %a{:href=>"/series/#{@series.id}"} Información
+      %li
+        %a{:href=>"/series/#{@series.id}/episodes"} Episodios
+      %li{:class=>"active"}
+        %a{:href=>"#episodios","data-toggle"=>"tab"}
+          Enlaces de #{@episode.numero_temporada}x#{'%02d' % @episode.numero_episodio}
+      %li
+        %a{:href=>"/series/#{@series.id}/comments"} Comentarios
+    #myTabContent{:class=>"tab-content"}
+      #episodios{:class=>"tab-pane fade in active"}
+        .show-info
+          .media Lista de enlaces
+          .show-info-tabla
+            %table.tabla-episodios.table
+              %tr
+                %th Idioma
+                %th Subtitulos
+                %th Enlace
+              -@episode.links.each do |elLink|
+                %tr
+                  %td
+                    = elLink.idioma
+                  %td
+                    = elLink.subtitulos
+                  %td.enlace-link
+                    %a{:href=>elLink.enlace,:target=>"_blank"}
+                      = elLink.enlace
+          .show-sinopsis
+            .media Agregar enlace
+            %p
+              %form{:action=>"/series/#{params[:series_id]}/episodes/#{params[:episode_id]}/links",:method=>"post",:class=>"new_link",:id=>"new_link"}
+                = hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token)
+                %table.table
+                  %tr
+                    %td
+                      %label Idioma del vídeo
+                    %td
+                      %select{:name=>"link[idioma]"}
+                        %option{:value=>"Castellano"} Castellano
+                        %option{:value=>"Inglés"} Inglés
+                        %option{:value=>"Latino"} Español Latino
+                        %option{:value=>"Catalán"} Catalán
+                        %option{:value=>"Euskera"} Euskera
+                        %option{:value=>"Gallego"} Gallego
+                        %option{:value=>"Sin Audio"} Sin Audio
+                  %tr
+                    %td
+                      %label Idioma de los subtítulos
+                    %td
+                      %select{:name=>"link[subtitulos]"}
+                        %option{:value=>"Sin subtítulos"} Sin subtítulos
+                        %option{:value=>"Castellano"} Castellano
+                        %option{:value=>"Inglés"} Inglés
+                        %option{:value=>"Latino"} Español Latino
+                        %option{:value=>"Catalán"} Catalán
+                        %option{:value=>"Euskera"} Euskera
+                        %option{:value=>"Gallego"} Gallego
+                  %tr
+                    %td
+                      %label Enlace
+                    %td.i-width-300
+                      %input{:type=>"text",:name=>"link[enlace]"}
+                %input{:type=>"hidden",:name=>"link[user_id]",:value=>current_user.id}
+                %input{:type=>"hidden",:name=>"link[episode_id]",:value=>params[:episode_id]}
+                %input{:type=>"submit"}
+
+
+
+  .show-col-3
+    Col3
