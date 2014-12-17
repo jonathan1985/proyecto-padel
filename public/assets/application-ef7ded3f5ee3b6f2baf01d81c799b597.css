@@ -7594,7 +7594,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 body {
   font-family: 'Open Sans', sans-serif; }
 
-.interior-series {
+.interior-palas {
   width: 1193px;
   margin: auto; }
 
@@ -7714,11 +7714,11 @@ body {
   margin-top: 30px;
   margin-bottom: 20px; }
 
-.tipo-serie-catalogo {
+.tipo-pala-catalogo {
   float: left;
   margin-right: 20px;
   width: 124px; }
-  .tipo-serie-catalogo img {
+  .tipo-pala-catalogo img {
     width: 124px;
     height: 184px;
     background-color: #eaeaea;
@@ -7726,7 +7726,7 @@ body {
     -moz-transition: all 0.1s linear;
     -o-transition: all 0.1s linear;
     transition: all 0.1s linear; }
-  .tipo-serie-catalogo label {
+  .tipo-pala-catalogo label {
     width: 124px;
     height: 50px;
     color: #353535;
@@ -7790,14 +7790,14 @@ body {
 .show-sinopsis {
   margin-top: 30px; }
 
-.numeros_series {
+.numeros_palas {
   float: left;
   font-family: 'Open Sans',Helvetica, sans-serif, Arial;
   color: #A8A8A8;
   font-size: 14px;
   font-weight: 100; }
 
-.nombre_series {
+.nombre_palas {
   font-family: 'Open Sans',Helvetica, sans-serif, Arial;
   color: #434343;
   font-size: 14px;
@@ -7810,7 +7810,7 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 380px !important; }
-  .nombre_series a {
+  .nombre_palas a {
     color: #434343;
     text-decoration: none; }
 
