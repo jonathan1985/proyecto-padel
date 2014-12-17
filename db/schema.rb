@@ -11,38 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219012040) do
+ActiveRecord::Schema.define(version: 0) do
 
   create_table "comments", force: true do |t|
     t.string   "commenter"
     t.text     "content"
     t.integer  "user_id"
-    t.integer  "series_id"
+    t.integer  "palas_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["series_id"], name: "index_comments_on_series_id"
+  add_index "comments", ["palas_id"], name: "index_comments_on_palas_id"
 
   create_table "episodes", force: true do |t|
     t.string   "nombre"
     t.integer  "numero_temporada"
     t.integer  "numero_episodio"
-    t.integer  "series_id"
+    t.integer  "palas_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "episodes", ["series_id"], name: "index_episodes_on_series_id"
+  add_index "episodes", ["palas_id"], name: "index_episodes_on_palas_id"
 
   create_table "follow_shows", force: true do |t|
     t.integer  "user_id"
-    t.integer  "series_id"
+    t.integer  "palas_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "follow_shows", ["series_id"], name: "index_follow_shows_on_series_id"
+  add_index "follow_shows", ["palas_id"], name: "index_follow_shows_on_palas_id"
   add_index "follow_shows", ["user_id"], name: "index_follow_shows_on_user_id"
 
   create_table "follow_users", force: true do |t|
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20131219012040) do
   add_index "links", ["episode_id"], name: "index_links_on_episode_id"
   add_index "links", ["user_id"], name: "index_links_on_user_id"
 
-  create_table "series", force: true do |t|
+  create_table "palas", force: true do |t|
     t.string   "nombre"
     t.text     "informacion"
     t.text     "sinopsis"

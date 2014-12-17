@@ -8,13 +8,13 @@
        -o-border-radius: $radius;
           border-radius: $radius;
 }
-$azul_series: #2980B9;
+$azul_palas: #2980B9;
 $azul_celeste: #139ABD;
 $azul_input: #68A6CE;
 body {
 	font-family: 'Open Sans', sans-serif;
 }
-.interior-series {
+.interior-palas {
 	width:1193px;
 	margin:auto;
 }
@@ -145,7 +145,7 @@ body {
 	margin-top:30px;
 	margin-bottom:20px;
 }
-.tipo-serie-catalogo {
+.tipo-pala-catalogo {
 	float:left;
 	margin-right:20px;
 	width: 124px;
@@ -254,7 +254,7 @@ body {
 	margin-top:30px;
 	@extend .mini;
 }
-.numeros_series {
+.numeros_palas {
 	float: left;
 	font-family: 'Open Sans',Helvetica, sans-serif, Arial;
 	color: #A8A8A8;
@@ -262,7 +262,7 @@ body {
 	font-weight: 100;
 }
 
-.nombre_series {
+.nombre_palas {
 	font-family: 'Open Sans',Helvetica, sans-serif, Arial;
 	color: #434343;
 	font-size: 14px;
@@ -371,7 +371,7 @@ body {
     border-radius: 10px;
   }
   b {
-    color: $azul_series;
+    color: $azul_palas;
   }
 }
 #comment_content {
@@ -387,6 +387,6 @@ body {
 .delete-comment{
   float:right;
   a {
-    color: $azul_series;
+    color: $azul_palas;
   }
 }

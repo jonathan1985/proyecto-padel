@@ -25,7 +25,7 @@
   .interior-1000
     %h2.no-top Palas que sigue #{u.username}
     - @follow_show.each do |pala_actual|
-      - actual = palas.where(id: pala_actual.palas_id)
+      - actual = Palas.where(id: pala_actual.palas_id)
       - actual.each do |mipala|
         %a{:href=>"../palas/#{mipala.id}"}
           .tipo-pala-catalogo

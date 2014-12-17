@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class palasControllerTest < ActionController::TestCase
+class PalasControllerTest < ActionController::TestCase
   setup do
     @palas = palas(:one)
   end
@@ -17,7 +17,7 @@ class palasControllerTest < ActionController::TestCase
   end
 
   test "should create palas" do
-    assert_difference('palas.count') do
+    assert_difference('Palas.count') do
       post :create, palas: { directores: @palas.directores, enlace_imagen: @palas.enlace_imagen, imagen: @palas.imagen, informacion: @palas.informacion, nombre: @palas.nombre, puntuacion: @palas.puntuacion, sinopsis: @palas.sinopsis, titulo_original: @palas.titulo_original, votos: @palas.votos }
     end
 
@@ -40,7 +40,7 @@ class palasControllerTest < ActionController::TestCase
   end
 
   test "should destroy palas" do
-    assert_difference('palas.count', -1) do
+    assert_difference('Palas.count', -1) do
       delete :destroy, id: @palas
     end
 

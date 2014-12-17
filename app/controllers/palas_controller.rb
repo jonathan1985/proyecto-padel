@@ -1,11 +1,11 @@
-class palasController < ApplicationController
+class PalasController < ApplicationController
   layout "inicio"
   before_action :set_palas, only: [:show, :edit, :update, :destroy]
 
   # GET /palas
   # GET /palas.json
   def index
-    @palas = palas.all
+    @palas = Palas.all
   end
 
   # GET /palas/1
@@ -15,7 +15,7 @@ class palasController < ApplicationController
 
   # GET /palas/new
   def new
-    @palas = palas.new
+    @palas = Palas.new
   end
 
   # GET /palas/1/edit
@@ -25,7 +25,7 @@ class palasController < ApplicationController
   # POST /palas
   # POST /palas.json
   def create
-    @palas = palas.new(palas_params)
+    @palas = Palas.new(palas_params)
 
     respond_to do |format|
       if @palas.save
@@ -65,7 +65,7 @@ class palasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_palas
-      @palas = palas.find(params[:id])
+      @palas = Palas.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

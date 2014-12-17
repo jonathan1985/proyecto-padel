@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class palasHelperTest < ActionView::TestCase
+class PalasHelperTest < ActionView::TestCase
 end

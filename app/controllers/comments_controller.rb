@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     # Necesito en params[:comment]
 
-    @palas = palas.find(params[:palas_id])
+    @palas = Palas.find(params[:palas_id])
     parametros = params[:comment].permit(:content, :commenter, :user_id)
 
     @comment = @palas.comments.create(parametros)
@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @palas = palas.find(params[:palas_id])
+    @palas = Palas.find(params[:palas_id])
     @comment = @palas.comments.find(params[:id])
     @comment.destroy
     redirect_to "#{palas_path(@palas)}/comments"

@@ -3,7 +3,7 @@
 	Foro Padel es una nueva aplicación destinada a resolver todas las preguntas sobre este maravilloso deporte.
 
 %h2 Últimas Palas añadidas
-- @palas = palas.order(created_at: :desc).limit(4)
+- @palas = Palas.order(created_at: :desc).limit(4)
 - @palas.each do |palas|
 	%a{:href=>"/palas/#{palas.id}"}
 		.tipo-pala-catalogo
@@ -13,7 +13,7 @@
 %h2 Últimas Palas seguidas
 - @seguidas = FollowShow.order(created_at: :desc).limit(4)
 - @seguidas.each do |seguida|
-- palas = palas.find(seguida.palas_id)
+- palas = Palas.find(seguida.palas_id)
 	%a{:href=>"/palas/#{palas.id}"}
 		.tipo-pala-catalogo
 			%img{:src=>palas.enlace_imagen}

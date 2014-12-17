@@ -5,7 +5,7 @@ class EpisodesController < ApplicationController
   end
 
   def create
-		@palas = palas.find(params[:palas_id])
+		@palas = Palas.find(params[:palas_id])
 		parametros = params.require(:episode).permit(:nombre, :numero_temporada, :numero_episodio)
 		puts parametros
 		@episode = @palas.episodes.create(parametros)
