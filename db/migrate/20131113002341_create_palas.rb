@@ -1,4 +1,4 @@
-class Createpalas < ActiveRecord::Migration
+class CreatePalas < ActiveRecord::Migration
   def change
     create_table :palas do |t|
       t.string :nombre
